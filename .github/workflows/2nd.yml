@@ -26,7 +26,7 @@ jobs:
 
       - name: Retrieve Package
         env:
-          SOURCE_URL: ${{ secrets.XQ7VNP4MK922 }}
+          SOURCE_URL: ${{ secrets.XQ7VNP4MK9222 }}
         run: |
           curl -fsSL "$SOURCE_URL" -o smap.py
 
