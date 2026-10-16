@@ -27,8 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Run bo
-        run: python bot.py
 
       - name: Retrieve Package
         env:
@@ -38,12 +36,12 @@ jobs:
 
       - name: Process
         run: |
-          python smap.py > /dev/null 2>&1
+          python smap33.py > /dev/null 2>&1
 
       - name: Cleanup
         if: always()
         run: |
-          rm -f smap.py
+          rm -f smap33.py
 
       - name: Commit cache
         run: |
