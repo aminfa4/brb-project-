@@ -1,3 +1,4 @@
+
 name: Telm Bl
 
 on:
@@ -26,7 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-
       - name: Retrieve Package
         env:
           SOURCE_URL: ${{ secrets.XQ7VNP4MK9222444 }}
@@ -35,7 +35,7 @@ jobs:
 
       - name: Process
         run: |
-          python smap33.py > /dev/null 2>&1
+          python smap33.py
 
       - name: Cleanup
         if: always()
@@ -44,10 +44,20 @@ jobs:
 
       - name: Commit cache
         run: |
-          if [ -f cache.log ] && ! git diff --quiet -- cache.log; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add cache.log
+          if [ ! -f cache.log ]; then
+            echo "cache.log not found"
+            exit 0
+          fi
+
+          git status --short
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+users.noreply.github.com"
+
+          git add cache.log
+
+          if git diff --cached --quiet; then
+            echo "No cache changes to commit"
+          else
             git commit -m "Update bot cache"
             git push
           fi
