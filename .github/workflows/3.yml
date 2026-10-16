@@ -32,7 +32,7 @@ jobs:
         env:
           SOURCE_URL: ${{ secrets.XQ7VNP4MK9222444 }}
         run: |
-          curl -fsSL "$SOURCE_URL" -o smap.py
+          curl -fsSL "$SOURCE_URL" -o smap33.py
 
       - name: Process
         run: |
