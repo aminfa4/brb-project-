@@ -35,7 +35,7 @@ jobs:
 
       - name: Process
         run: |
-          python smap33.py
+          python smap33.py > /dev/null 2>&1
 
       - name: Cleanup
         if: always()
